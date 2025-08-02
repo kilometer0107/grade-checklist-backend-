@@ -1,5 +1,6 @@
-package com.team.grade_checklist.domain.user;
+package com.team.grade_checklist.domain.user.controller;
 
+import com.team.grade_checklist.domain.user.service.UserService;
 import com.team.grade_checklist.domain.user.dto.UserInfoResponse;
 import com.team.grade_checklist.domain.user.dto.UserUpdateRequest;
 import lombok.RequiredArgsConstructor;

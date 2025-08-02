@@ -1,7 +1,9 @@
-package com.team.grade_checklist.domain.user;
+package com.team.grade_checklist.domain.user.service;
 
 import com.team.grade_checklist.domain.user.dto.UserInfoResponse;
 import com.team.grade_checklist.domain.user.dto.UserUpdateRequest;
+import com.team.grade_checklist.domain.user.entity.User;
+import com.team.grade_checklist.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

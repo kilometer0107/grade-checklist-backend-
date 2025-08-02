@@ -1,7 +1,7 @@
 package com.team.grade_checklist.domain.user.dto;
 
-import com.team.grade_checklist.domain.user.GraduationTrack;
-import com.team.grade_checklist.domain.user.User;
+import com.team.grade_checklist.domain.user.enums.GraduationTrack;
+import com.team.grade_checklist.domain.user.entity.User;
 import lombok.Builder;
 import lombok.Getter;
 

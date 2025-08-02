@@ -1,5 +1,6 @@
-package com.team.grade_checklist.domain.user;
+package com.team.grade_checklist.domain.user.entity;
 
+import com.team.grade_checklist.domain.user.enums.GraduationTrack;
 import jakarta.persistence.*;
 import lombok.*;
 

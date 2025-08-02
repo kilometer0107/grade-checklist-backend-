@@ -1,5 +1,6 @@
-package com.team.grade_checklist.domain.user;
+package com.team.grade_checklist.domain.user.repository;
 
+import com.team.grade_checklist.domain.user.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

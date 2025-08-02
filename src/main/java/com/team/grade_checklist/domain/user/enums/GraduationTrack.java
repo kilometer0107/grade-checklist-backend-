@@ -1,4 +1,4 @@
-package com.team.grade_checklist.domain.user;
+package com.team.grade_checklist.domain.user.enums;
 
 public enum GraduationTrack { //졸업 트랙 종류
     INTENSIVE, //심화전공
