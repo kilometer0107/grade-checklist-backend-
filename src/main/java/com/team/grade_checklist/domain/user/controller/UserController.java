@@ -1,6 +1,7 @@
 package com.team.grade_checklist.domain.user.controller;
 
 import com.team.grade_checklist.domain.user.dto.response.SignupResponse;
+import com.team.grade_checklist.domain.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

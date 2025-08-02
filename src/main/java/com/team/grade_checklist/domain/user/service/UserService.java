@@ -1,10 +1,15 @@
 package com.team.grade_checklist.domain.user.service;
 
 
+import com.team.grade_checklist.domain.user.dto.request.SignupRequest;
+import com.team.grade_checklist.domain.user.dto.response.SignupResponse;
+import com.team.grade_checklist.domain.user.entity.User;
 import com.team.grade_checklist.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.time.Duration;
 
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -12,5 +17,28 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserService {
     private final UserRepository userRepository;
 
-    
+    public User findById(Long userId) {
+        return userRepository.findById(userId)
+                .orElseThrow(() -> new IllegalArgumentException("Unexpected user"));
+    }
+
+    @Transactional
+    public SignupResponse signUp(SignupRequest request) {
+        String name = request.name();
+        String password = request.password();
+        String studentId = request.studentId();
+
+        User user = User.builder()
+                .name(name)
+                .password(password)
+                .studentId(studentId)
+                .build();
+
+        userRepository.save(user);
+
+        String accessToken = tokenProvider.generateToken(user, Duration.ofDays(1));
+
+        return new SignupResponse(accessToken);
+    }
+    //TODO: 로그인 구현
 }
