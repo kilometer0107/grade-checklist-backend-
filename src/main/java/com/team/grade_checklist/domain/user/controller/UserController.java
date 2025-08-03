@@ -1,14 +1,13 @@
 package com.team.grade_checklist.domain.user.controller;
 
+import com.team.grade_checklist.domain.user.dto.request.LoginRequest;
 import com.team.grade_checklist.domain.user.dto.request.SignupRequest;
+import com.team.grade_checklist.domain.user.dto.response.LoginResponse;
 import com.team.grade_checklist.domain.user.dto.response.SignupResponse;
 import com.team.grade_checklist.domain.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/auth")
@@ -21,4 +20,8 @@ public class UserController {
         return ResponseEntity.ok(userService.signUp(request));
     }
     //TODO: 로그인 API 구현
+    @PostMapping("/login")
+    public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest request) {
+        return ResponseEntity.ok(userService.login(request));
+    }
 }

@@ -1,7 +1,9 @@
 package com.team.grade_checklist.domain.user.service;
 
 
+import com.team.grade_checklist.domain.user.dto.request.LoginRequest;
 import com.team.grade_checklist.domain.user.dto.request.SignupRequest;
+import com.team.grade_checklist.domain.user.dto.response.LoginResponse;
 import com.team.grade_checklist.domain.user.dto.response.SignupResponse;
 import com.team.grade_checklist.domain.user.entity.User;
 import com.team.grade_checklist.domain.user.repository.UserRepository;
@@ -41,4 +43,18 @@ public class UserService {
         return new SignupResponse(accessToken);
     }
     //TODO: 로그인 구현
+    @Transactional
+    public LoginResponse login(LoginRequest request) {
+
+        User user = userRepository.findByEmail(request.email())
+                .orElseThrow(()-> new IllegalArgumentException("가입되지 않은 이메일입니다"));
+
+        if(!request.password().equals(user.getPassword())) {
+            throw new IllegalArgumentException("잘못된 비밀번호입니다.");
+        }
+
+        String accessToken = tokenProvider.generateToken(user, Duration.ofDays(1));
+
+        return new LoginResponse(accessToken, user.getName());
+    }
 }
