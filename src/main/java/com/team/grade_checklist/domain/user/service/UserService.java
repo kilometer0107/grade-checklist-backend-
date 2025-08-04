@@ -8,6 +8,7 @@ import com.team.grade_checklist.domain.user.dto.response.SignupResponse;
 import com.team.grade_checklist.domain.user.entity.User;
 import com.team.grade_checklist.domain.user.enums.Major;
 import com.team.grade_checklist.domain.user.repository.UserRepository;
+import com.team.grade_checklist.global.config.jwt.TokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -45,7 +46,7 @@ public class UserService {
 
         userRepository.save(user);
 
-        String accessToken = tokenProvider.generateToken(user, Duration.ofDays(1));
+        String accessToken = TokenProvider.generateToken(user, Duration.ofDays(1));
 
         return new SignupResponse(accessToken);
     }
@@ -60,7 +61,7 @@ public class UserService {
             throw new IllegalArgumentException("잘못된 비밀번호입니다.");
         }
 
-        String accessToken = tokenProvider.generateToken(user, Duration.ofDays(1));
+        String accessToken = TokenProvider.generateToken(user, Duration.ofDays(1));
 
         return new LoginResponse(accessToken, user.getName());
     }
