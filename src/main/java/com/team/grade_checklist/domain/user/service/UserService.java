@@ -8,6 +8,7 @@ import com.team.grade_checklist.domain.user.dto.response.SignupResponse;
 import com.team.grade_checklist.domain.user.entity.User;
 import com.team.grade_checklist.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,6 +19,7 @@ import java.time.Duration;
 @Service
 public class UserService {
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     public User findById(Long userId) {
         return userRepository.findById(userId)
@@ -28,12 +30,14 @@ public class UserService {
     public SignupResponse signUp(SignupRequest request) {
         String name = request.name();
         String password = request.password();
-        String studentId = request.studentId();
+        Integer studentId = request.studentId();
+        String email = request.email();
 
         User user = User.builder()
                 .name(name)
                 .password(password)
                 .studentId(studentId)
+                .email(email)
                 .build();
 
         userRepository.save(user);
@@ -46,10 +50,10 @@ public class UserService {
     @Transactional
     public LoginResponse login(LoginRequest request) {
 
-        User user = userRepository.findByEmail(request.email())
+        User user = userRepository.findByStudentId(request.studentId())
                 .orElseThrow(()-> new IllegalArgumentException("가입되지 않은 이메일입니다"));
 
-        if(!request.password().equals(user.getPassword())) {
+        if(!passwordEncoder.matches(request.password(), user.getPassword())) {
             throw new IllegalArgumentException("잘못된 비밀번호입니다.");
         }
 

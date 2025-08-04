@@ -22,4 +22,6 @@ public class User {
     private Integer studentId;
 
     private String password;
+
+    private String email;
 }
