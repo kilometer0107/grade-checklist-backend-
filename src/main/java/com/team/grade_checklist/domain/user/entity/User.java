@@ -1,5 +1,6 @@
 package com.team.grade_checklist.domain.user.entity;
 
+import com.team.grade_checklist.domain.user.enums.Major;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -24,4 +25,7 @@ public class User {
     private String password;
 
     private String email;
+
+    @Enumerated(EnumType.STRING)
+    private Major major;
 }

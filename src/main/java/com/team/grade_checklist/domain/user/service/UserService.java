@@ -6,6 +6,7 @@ import com.team.grade_checklist.domain.user.dto.request.SignupRequest;
 import com.team.grade_checklist.domain.user.dto.response.LoginResponse;
 import com.team.grade_checklist.domain.user.dto.response.SignupResponse;
 import com.team.grade_checklist.domain.user.entity.User;
+import com.team.grade_checklist.domain.user.enums.Major;
 import com.team.grade_checklist.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -32,12 +33,14 @@ public class UserService {
         String password = request.password();
         Integer studentId = request.studentId();
         String email = request.email();
+        Major major = request.major();
 
         User user = User.builder()
                 .name(name)
                 .password(password)
                 .studentId(studentId)
                 .email(email)
+                .major(major)
                 .build();
 
         userRepository.save(user);
