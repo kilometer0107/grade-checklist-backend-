@@ -22,6 +22,7 @@ import java.time.Duration;
 public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private TokenProvider tokenProvider;
 
     public User findById(Long userId) {
         return userRepository.findById(userId)
@@ -46,7 +47,7 @@ public class UserService {
 
         userRepository.save(user);
 
-        String accessToken = TokenProvider.generateToken(user, Duration.ofDays(1));
+        String accessToken = tokenProvider.generateToken(user, Duration.ofDays(1));
 
         return new SignupResponse(accessToken);
     }
@@ -61,7 +62,7 @@ public class UserService {
             throw new IllegalArgumentException("잘못된 비밀번호입니다.");
         }
 
-        String accessToken = TokenProvider.generateToken(user, Duration.ofDays(1));
+        String accessToken = tokenProvider.generateToken(user, Duration.ofDays(1));
 
         return new LoginResponse(accessToken, user.getName());
     }
