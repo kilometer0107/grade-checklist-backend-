@@ -4,19 +4,21 @@ import com.team.grade_checklist.domain.user.enums.GraduationTrack;
 import jakarta.persistence.*;
 import lombok.*;
 
+//사용자 엔티티
 @Entity
+@Table(name = "users")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-@Builder
+@Builder(toBuilder = true)
 public class User {
 
     @Id
     @Column(name = "student_id", nullable = false, unique = true)
-    private String studentId; //학번(로그인 ID로 사용, 수정 불가}
+    private String studentId;
 
     @Column(nullable = false)
-    private String password; //비번(별도 기능에서 변경)
+    private String password;
 
     @Column(nullable = false)
     private String name;
@@ -29,7 +31,7 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "graduation_track", nullable = false)
-    private GraduationTrack graduationTrack; // 졸업트랙: 심화전공, 부전공, 다전공 중 선택
+    private GraduationTrack graduationTrack; // 졸업트랙: 심화전공만
 
 
     // 사용자 정보 수정 메서드(학번, 비번 제외)
