@@ -26,8 +26,7 @@ public class UserService {
                 user.getStudentId(),
                 user.getName(),
                 user.getDepartment(),
-                user.getAdmissionYear(),
-                user.getGraduationTrack()
+                user.getAdmissionYear()
         );
     }
 
@@ -40,8 +39,7 @@ public class UserService {
         user.updateInfo(
                 request.getName(),
                 request.getDepartment(),
-                request.getAdmissionYear(),
-                request.getGraduationTrack()
+                request.getAdmissionYear()
         );
     }
 

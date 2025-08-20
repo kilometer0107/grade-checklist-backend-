@@ -1,6 +1,5 @@
 package com.team.grade_checklist.domain.user.dto.response;
 
-import com.team.grade_checklist.domain.user.enums.GraduationTrack;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,8 +20,6 @@ public class UserResponse {
     private String department;
 
     private Integer admissionYear;
-
-    private GraduationTrack graduationTrack;
 
     // 비밀번호는 보안상 제외
 }

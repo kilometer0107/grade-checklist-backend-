@@ -1,6 +1,5 @@
 package com.team.grade_checklist.domain.user.dto.request;
 
-import com.team.grade_checklist.domain.user.enums.GraduationTrack;
 import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -32,7 +31,4 @@ public class RegisterRequest {
     @Min(value = 2000, message = "입학년도는 2000년 이후여야 합니다")
     @Max(value = 2030, message = "입학년도는 2030년 이전이어야 합니다")
     private Integer admissionYear;
-
-    @NotNull(message = "졸업트랙은 필수입니다")
-    private GraduationTrack graduationTrack;
 }

@@ -33,7 +33,6 @@ public class AuthService {
                 .name(request.getName())
                 .department(request.getDepartment())
                 .admissionYear(request.getAdmissionYear())
-                .graduationTrack(request.getGraduationTrack())
                 .build();
 
         return userRepository.save(user);

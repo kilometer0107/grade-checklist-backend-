@@ -1,6 +1,5 @@
 package com.team.grade_checklist.domain.user.entity;
 
-import com.team.grade_checklist.domain.user.enums.GraduationTrack;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -29,16 +28,10 @@ public class User {
     @Column(name = "admission_year", nullable = false)
     private Integer admissionYear; //입학년도: 졸업 요건 버전 판별
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "graduation_track", nullable = false)
-    private GraduationTrack graduationTrack; // 졸업트랙: 심화전공만
-
-
     // 사용자 정보 수정 메서드(학번, 비번 제외)
-    public void updateInfo(String name, String department, Integer admissionYear, GraduationTrack graduationTrack) {
+    public void updateInfo(String name, String department, Integer admissionYear) {
         this.name = name;
         this.department = department;
         this.admissionYear = admissionYear;
-        this.graduationTrack = graduationTrack;
     }
 }
