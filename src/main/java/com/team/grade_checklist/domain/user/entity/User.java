@@ -3,6 +3,8 @@ package com.team.grade_checklist.domain.user.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
+
 //사용자 엔티티
 @Entity
 @Table(name = "users")
@@ -26,12 +28,16 @@ public class User {
     private String department;
 
     @Column(name = "admission_year", nullable = false)
-    private Integer admissionYear; //입학년도: 졸업 요건 버전 판별
+    private Integer admissionYear;
+
+    @Column(name = "average_grade", precision = 3, scale = 2) // null 허용
+    private BigDecimal averageGrade;
 
     // 사용자 정보 수정 메서드(학번, 비번 제외)
-    public void updateInfo(String name, String department, Integer admissionYear) {
+    public void updateInfo(String name, String department, Integer admissionYear, BigDecimal averageGrade) {
         this.name = name;
         this.department = department;
         this.admissionYear = admissionYear;
+        this.averageGrade = averageGrade;
     }
 }

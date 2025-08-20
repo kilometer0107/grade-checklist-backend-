@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
+
 //내 정보 조회 응답
 @Getter
 @Setter
@@ -20,6 +22,8 @@ public class UserResponse {
     private String department;
 
     private Integer admissionYear;
+
+    private BigDecimal averageGrade;
 
     // 비밀번호는 보안상 제외
 }

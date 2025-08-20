@@ -26,7 +26,8 @@ public class UserService {
                 user.getStudentId(),
                 user.getName(),
                 user.getDepartment(),
-                user.getAdmissionYear()
+                user.getAdmissionYear(),
+                user.getAverageGrade()
         );
     }
 
@@ -39,7 +40,8 @@ public class UserService {
         user.updateInfo(
                 request.getName(),
                 request.getDepartment(),
-                request.getAdmissionYear()
+                request.getAdmissionYear(),
+                request.getAverageGrade()
         );
     }
 
