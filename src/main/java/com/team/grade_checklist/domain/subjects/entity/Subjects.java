@@ -1,5 +1,7 @@
 package com.team.grade_checklist.domain.subjects.entity;
 
+import com.team.grade_checklist.domain.subjects.enums.Majors;
+import com.team.grade_checklist.domain.subjects.enums.Years;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -27,4 +29,8 @@ public class Subjects {
     private String grade;
 
     private String semester;
+
+    private Majors major;
+
+    private Years year;
 }
