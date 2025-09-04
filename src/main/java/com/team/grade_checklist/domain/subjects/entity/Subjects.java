@@ -20,7 +20,7 @@ public class Subjects {
 
     @ManyToOne
     @JoinColumn(name = "course_classification_id", nullable = false)
-    private Integer courseId;
+    private CourseClassification courseId;
 
     private String subjectName;
 

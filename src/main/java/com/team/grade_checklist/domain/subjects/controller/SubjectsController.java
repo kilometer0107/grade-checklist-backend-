@@ -1,19 +1,30 @@
 package com.team.grade_checklist.domain.subjects.controller;
 
 
+import com.team.grade_checklist.domain.subjects.dto.response.SubjectsResponseDto;
 import com.team.grade_checklist.domain.subjects.service.SubjectsService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
-@RequestMapping("/user/subjects")
+@RequestMapping("/subjects")
 @RequiredArgsConstructor
 public class SubjectsController {
     private final SubjectsService subjectsService;
 
-    // 등록 과목 조회
+    // 과목 전체 조회 및 검색
     @GetMapping
-    
+    public ResponseEntity<List<SubjectsResponseDto>> searchSubjects(
+            @RequestParam(value = "query", required = false) String query) {
+
+        List<SubjectsResponseDto> results = subjectsService.searchSubjects(query);
+        return ResponseEntity.ok(results);
+    }
+
+    //TODO : 과목 등록
+    @PostMapping("/{subjectId}")
+
 }
