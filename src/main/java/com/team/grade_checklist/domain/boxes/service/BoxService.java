@@ -1,6 +1,7 @@
 package com.team.grade_checklist.domain.boxes.service;
 
 
+import com.team.grade_checklist.domain.boxes.dto.response.BoxResponseDto;
 import com.team.grade_checklist.domain.boxes.entity.EnrolledSubjects;
 import com.team.grade_checklist.domain.boxes.repository.EnrolledSubjectsRepository;
 import com.team.grade_checklist.domain.subjects.entity.Subjects;
@@ -10,6 +11,9 @@ import com.team.grade_checklist.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -40,5 +44,14 @@ public class BoxService {
         EnrolledSubjects enrolledSubject = enrolledSubjectsRepository.findByStudentIdAndSubjectId(studentId, subjectId)
                 .orElseThrow(()-> new IllegalArgumentException("해당 과목이 등록되어있지 않습니다"));
         enrolledSubjectsRepository.delete(enrolledSubject);
+    }
+
+    @Transactional(readOnly = true)
+    public List<BoxResponseDto> getSubjectsInBox(Integer studentId) {
+        List<EnrolledSubjects> enrolledList = enrolledSubjectsRepository.findAllByUser_StudentId(studentId);
+
+        return enrolledList.stream()
+                .map(BoxResponseDto::from) // EnrolledSubjects 엔티티를 DTO로 변환
+                .collect(Collectors.toList());
     }
 }
