@@ -10,7 +10,7 @@ import lombok.Setter;
 public class LoginRequest {
 
     @NotBlank(message = "학번은 필수입니다")
-    private String studentId;
+    private Integer studentId;
 
     @NotBlank(message = "비밀번호는 필수입니다")
     private String password;

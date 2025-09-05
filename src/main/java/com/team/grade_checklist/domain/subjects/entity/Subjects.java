@@ -15,7 +15,6 @@ import lombok.*;
 public class Subjects {
     @Id
     @Column(name = "subjects_id", nullable = false)
-    @GeneratedValue
     private Integer subjectId;
 
     @ManyToOne

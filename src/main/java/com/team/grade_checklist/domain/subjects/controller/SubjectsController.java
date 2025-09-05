@@ -24,7 +24,5 @@ public class SubjectsController {
         return ResponseEntity.ok(results);
     }
 
-    //TODO : 과목 등록
-    @PostMapping("/{subjectId}")
 
 }

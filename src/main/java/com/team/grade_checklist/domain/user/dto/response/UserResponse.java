@@ -1,5 +1,6 @@
 package com.team.grade_checklist.domain.user.dto.response;
 
+import com.team.grade_checklist.domain.subjects.enums.Majors;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,11 +16,11 @@ import java.math.BigDecimal;
 public class UserResponse {
 
 
-    private String studentId;
+    private Integer studentId;
 
     private String name;
 
-    private String department;
+    private Majors department;
 
     private Integer admissionYear;
 
