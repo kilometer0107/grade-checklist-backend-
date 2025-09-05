@@ -32,5 +32,5 @@ public class Subjects {
 
     private Majors major;
 
-    private Years year;
+    private Years lectureyear;
 }

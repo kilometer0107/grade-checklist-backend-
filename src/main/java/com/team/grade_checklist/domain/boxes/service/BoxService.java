@@ -25,7 +25,7 @@ public class BoxService {
     private final SubjectsRepository subjectsRepository;
     private final UserRepository userRepository;
 
-    public void addSubjectToBox(Integer studentId, Integer subjectId) {
+    public void addSubjectToBox(String studentId, Integer subjectId) {
         User user = userRepository.findByStudentId(studentId)
                 .orElseThrow(()->new IllegalArgumentException("사용자를 찾을 수 없습니다"));
         Subjects subjects = subjectsRepository.findById(subjectId)
@@ -39,15 +39,15 @@ public class BoxService {
         enrolledSubjectsRepository.save(enrolledSubject);
     }
 
-    public void deleteSubjectFromBox(Integer studentId, Integer subjectId) {
+    public void deleteSubjectFromBox(String studentId, Integer subjectId) {
         //pkfk로 enrolledsubjects 엔티티 찾기
-        EnrolledSubjects enrolledSubject = enrolledSubjectsRepository.findByStudentIdAndSubjectId(studentId, subjectId)
+        EnrolledSubjects enrolledSubject = enrolledSubjectsRepository.findByUser_StudentIdAndSubject_SubjectId(studentId, subjectId)
                 .orElseThrow(()-> new IllegalArgumentException("해당 과목이 등록되어있지 않습니다"));
         enrolledSubjectsRepository.delete(enrolledSubject);
     }
 
     @Transactional(readOnly = true)
-    public List<BoxResponseDto> getSubjectsInBox(Integer studentId) {
+    public List<BoxResponseDto> getSubjectsInBox(String studentId) {
         List<EnrolledSubjects> enrolledList = enrolledSubjectsRepository.findAllByUser_StudentId(studentId);
 
         return enrolledList.stream()

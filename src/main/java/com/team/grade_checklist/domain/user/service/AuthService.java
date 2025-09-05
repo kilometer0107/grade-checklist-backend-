@@ -40,7 +40,7 @@ public class AuthService {
 
     // 로그인 처리
     @Transactional(readOnly = true)
-    public User login(Integer studentId, String password) {
+    public User login(String studentId, String password) {
         User user = userRepository.findByStudentId(studentId).orElse(null);
         if (user != null && passwordEncoder.matches(password, user.getPassword())) {
             return user;

@@ -12,7 +12,7 @@ public class RegisterRequest {
 
     @NotBlank(message = "학번은 필수입니다")
     @Pattern(regexp = "^\\d{8,10}$", message = "학번은 8자리 숫자여야 합니다")
-    private Integer studentId;
+    private String studentId;
 
     @NotBlank(message = "비밀번호는 필수입니다")
     @Size(min = 6, max = 20, message = "비밀번호는 6-20자리여야 합니다")

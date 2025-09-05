@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 public class UserResponse {
 
 
-    private Integer studentId;
+    private String studentId;
 
     private String name;
 

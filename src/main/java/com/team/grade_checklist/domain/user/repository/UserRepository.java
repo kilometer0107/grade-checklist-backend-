@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<User, String> {
 
-    Optional<User> findByStudentId(Integer studentId);  //로그인, 사용자 조회 등 사용
+    Optional<User> findByStudentId(String studentId);  //로그인, 사용자 조회 등 사용
 
-    boolean existsByStudentId(Integer studentId); //회원가입 시 학번 중복 확인용
+    boolean existsByStudentId(String studentId); //회원가입 시 학번 중복 확인용
 }

@@ -22,7 +22,7 @@ public class BoxController {
     public ResponseEntity<Void> addSubjectToBox(@PathVariable Integer subjectId,
                                                 @AuthenticationPrincipal UserDetails userDetails) {
 
-        Integer currentUserId = Integer.parseInt(userDetails.getUsername());
+        String currentUserId = userDetails.getUsername();
 
         boxService.addSubjectToBox(currentUserId, subjectId);
         return ResponseEntity.status(HttpStatus.CREATED).build();
@@ -34,7 +34,7 @@ public class BoxController {
     public ResponseEntity<List<BoxResponseDto>> getSubjectsInBox(
             @AuthenticationPrincipal UserDetails userDetails) {
 
-        Integer currentUserId = Integer.parseInt(userDetails.getUsername());
+        String currentUserId = userDetails.getUsername();
         List<BoxResponseDto> userBox = boxService.getSubjectsInBox(currentUserId);
         return ResponseEntity.ok(userBox);
     }
@@ -45,7 +45,7 @@ public class BoxController {
             @PathVariable Integer subjectId,
             @AuthenticationPrincipal UserDetails userDetails) {
 
-        Integer currentUserId = Integer.parseInt(userDetails.getUsername());
+        String currentUserId = userDetails.getUsername();
         boxService.deleteSubjectFromBox(currentUserId, subjectId);
         return ResponseEntity.ok().build();
     }
