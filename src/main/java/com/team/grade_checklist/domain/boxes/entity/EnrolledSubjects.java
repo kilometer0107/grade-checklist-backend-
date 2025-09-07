@@ -13,7 +13,7 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@IdClass(EnrolledSubjects.class)
+@IdClass(EnrolledSubjectsId.class)
 public class EnrolledSubjects {
 
     @Id

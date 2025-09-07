@@ -25,7 +25,8 @@ public class RegisterRequest {
     @Size(min = 2, max = 10, message = "이름은 2-10자리여야 합니다")
     private String name;
 
-    @NotBlank(message = "학과는 필수입니다")
+    //@NotBlank(message = "학과는 필수입니다")
+    @NotNull(message = "학과는 필수입니다")
     private Majors department;
 
     @NotNull(message = "입학년도는 필수입니다")

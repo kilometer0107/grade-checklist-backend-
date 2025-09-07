@@ -40,7 +40,10 @@ dependencies {
 	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'
 
 	// H2 데이터베이스 (개발/테스트용)
-	runtimeOnly 'com.h2database:h2'
+	//runtimeOnly 'com.h2database:h2'
+
+	// MYSQL 데이터 베이스
+	runtimeOnly 'com.mysql:mysql-connector-j'
 }
 
 tasks.named('test') {
