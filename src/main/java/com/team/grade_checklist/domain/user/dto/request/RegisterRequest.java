@@ -32,7 +32,5 @@ public class RegisterRequest {
     private Majors department;
 
     @NotNull(message = "입학년도는 필수입니다")
-    @Min(value = 2022, message = "입학년도는 2022년 이후여야 합니다")
-    @Max(value = 2025, message = "입학년도는 2025년 이전이어야 합니다")
     private Years admissionYear;
 }

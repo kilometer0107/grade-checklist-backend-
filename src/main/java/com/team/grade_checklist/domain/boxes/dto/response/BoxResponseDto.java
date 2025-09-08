@@ -8,6 +8,8 @@ public record BoxResponseDto(
         Integer subjectId,
         String subjectName,
         Integer credit,
+        String grade,
+        String semester,
 
         // EnrolledSubjects 엔티티에서 가져올 정보
         boolean isTaken
@@ -20,6 +22,8 @@ public record BoxResponseDto(
                 subject.getSubjectId(),
                 subject.getSubjectName(),
                 subject.getCredit(),
+                subject.getGrade(),
+                subject.getSemester(),
                 enrolled.isTaken() // 수강 여부는 EnrolledSubjects에서
         );
     }
