@@ -30,7 +30,9 @@ public class Subjects {
 
     private String semester;
 
+    @Enumerated(EnumType.STRING)
     private Majors major;
 
+    @Enumerated(EnumType.STRING)
     private Years lectureyear;
 }

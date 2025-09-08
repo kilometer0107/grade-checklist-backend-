@@ -8,10 +8,12 @@ import com.team.grade_checklist.domain.user.service.AuthService;
 import com.team.grade_checklist.security.JwtUtil;
 import com.team.grade_checklist.security.TokenBlacklistService;
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 // 인증 관련 controller
+@Slf4j
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
@@ -53,6 +55,7 @@ public class AuthController {
                 return ResponseEntity.badRequest().body(AuthResponse.failure("학번 또는 비밀번호가 올바르지 않습니다."));
             }
         } catch (Exception e) {
+            log.error("에러", e);
             return ResponseEntity.internalServerError().body(AuthResponse.failure("로그인 중 오류가 발생했습니다."));
         }
     }

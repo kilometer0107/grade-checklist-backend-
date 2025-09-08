@@ -1,5 +1,6 @@
 package com.team.grade_checklist.domain.user.service;
 
+import com.team.grade_checklist.domain.subjects.enums.Majors;
 import com.team.grade_checklist.domain.user.dto.request.RegisterRequest;
 import com.team.grade_checklist.domain.user.entity.User;
 import com.team.grade_checklist.domain.user.repository.UserRepository;
@@ -31,7 +32,7 @@ public class AuthService {
                 .studentId(request.getStudentId())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .name(request.getName())
-                .department(request.getDepartment())
+                .department((request.getDepartment() != null) ? request.getDepartment() : Majors.ETC)
                 .admissionYear(request.getAdmissionYear())
                 .build();
 

@@ -26,6 +26,7 @@ public class User {
     private String name;
 
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private Majors department;
 
     @Column(name = "admission_year", nullable = false)
