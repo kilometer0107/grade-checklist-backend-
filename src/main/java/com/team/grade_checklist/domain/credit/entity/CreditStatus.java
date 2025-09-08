@@ -26,7 +26,7 @@ public class CreditStatus {
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "course_classification_id", nullable = false)
-    private CourseClassification courseId;
+    private CourseClassification courseClassification;
 
     @Column(name = "required_credits")
     private Integer requiredCredits;

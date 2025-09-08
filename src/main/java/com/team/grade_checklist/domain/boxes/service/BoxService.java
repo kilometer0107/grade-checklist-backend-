@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 @Service
@@ -53,5 +54,16 @@ public class BoxService {
         return enrolledList.stream()
                 .map(BoxResponseDto::from) // EnrolledSubjects 엔티티를 DTO로 변환
                 .collect(Collectors.toList());
+    }
+
+    @Transactional
+    public void updateIsTakenStatus(String studentId, Integer subjectId, boolean isTaken) {
+        EnrolledSubjects enrolledSubject = enrolledSubjectsRepository.findByUser_StudentIdAndSubject_SubjectId(studentId, subjectId)
+                .orElseThrow(() -> new NoSuchElementException("해당 수강 정보를 찾을 수 없습니다."));
+
+        boolean currentState = enrolledSubject.isTaken();
+
+        enrolledSubject.setTaken(!currentState);
+
     }
 }

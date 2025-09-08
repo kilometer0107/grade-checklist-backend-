@@ -1,5 +1,6 @@
 package com.team.grade_checklist.domain.boxes.controller;
 
+import com.team.grade_checklist.domain.boxes.dto.request.IsTakenUpdateRequest;
 import com.team.grade_checklist.domain.boxes.dto.response.BoxResponseDto;
 import com.team.grade_checklist.domain.boxes.service.BoxService;
 import lombok.RequiredArgsConstructor;
@@ -48,6 +49,20 @@ public class BoxController {
         String currentUserId = userDetails.getUsername();
         boxService.deleteSubjectFromBox(currentUserId, subjectId);
         return ResponseEntity.ok().build();
+    }
+
+    //TODO : 수강 과목 체크
+    @PatchMapping("/{subjectId}/taken")
+    public ResponseEntity<Void> updateIsTaken(
+            @AuthenticationPrincipal UserDetails userDetails,
+            @PathVariable Integer subjectId,
+            @RequestBody IsTakenUpdateRequest request) {
+
+        String currentUserId = userDetails.getUsername();
+        boxService.updateIsTakenStatus(currentUserId, subjectId, request.isTaken());
+
+        return ResponseEntity.ok().build();
+
     }
 
 }
