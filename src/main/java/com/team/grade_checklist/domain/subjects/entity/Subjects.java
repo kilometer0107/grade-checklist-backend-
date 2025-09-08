@@ -34,5 +34,5 @@ public class Subjects {
     private Majors major;
 
     @Enumerated(EnumType.STRING)
-    private Years lectureyear;
+    private Years curriculumYear;
 }

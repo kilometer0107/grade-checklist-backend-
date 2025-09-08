@@ -1,6 +1,8 @@
 package com.team.grade_checklist.domain.user.dto.request;
 
 import com.team.grade_checklist.domain.subjects.enums.Majors;
+import com.team.grade_checklist.domain.subjects.enums.Years;
+import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -32,5 +34,5 @@ public class RegisterRequest {
     @NotNull(message = "입학년도는 필수입니다")
     @Min(value = 2022, message = "입학년도는 2022년 이후여야 합니다")
     @Max(value = 2025, message = "입학년도는 2025년 이전이어야 합니다")
-    private Integer admissionYear;
+    private Years admissionYear;
 }

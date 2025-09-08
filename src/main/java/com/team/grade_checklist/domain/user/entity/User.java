@@ -1,6 +1,7 @@
 package com.team.grade_checklist.domain.user.entity;
 
 import com.team.grade_checklist.domain.subjects.enums.Majors;
+import com.team.grade_checklist.domain.subjects.enums.Years;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -30,13 +31,14 @@ public class User {
     private Majors department;
 
     @Column(name = "admission_year", nullable = false)
-    private Integer admissionYear;
+    @Enumerated(EnumType.STRING)
+    private Years admissionYear;
 
     @Column(name = "average_grade", precision = 3, scale = 2) // null 허용
     private BigDecimal averageGrade;
 
     // 사용자 정보 수정 메서드(학번, 비번 제외)
-    public void updateInfo(String name, Majors department, Integer admissionYear, BigDecimal averageGrade) {
+    public void updateInfo(String name, Majors department, Years admissionYear, BigDecimal averageGrade) {
         this.name = name;
         this.department = department;
         this.admissionYear = admissionYear;

@@ -5,6 +5,8 @@ import com.team.grade_checklist.domain.subjects.dto.response.SubjectsResponseDto
 import com.team.grade_checklist.domain.subjects.service.SubjectsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,9 +20,12 @@ public class SubjectsController {
     // 과목 전체 조회 및 검색
     @GetMapping
     public ResponseEntity<List<SubjectsResponseDto>> searchSubjects(
+            @AuthenticationPrincipal UserDetails userDetails,
             @RequestParam(value = "query", required = false) String query) {
 
-        List<SubjectsResponseDto> results = subjectsService.searchSubjects(query);
+        String studentId = userDetails.getUsername();
+
+        List<SubjectsResponseDto> results = subjectsService.searchSubjects(studentId, query);
         return ResponseEntity.ok(results);
     }
 

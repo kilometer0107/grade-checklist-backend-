@@ -1,6 +1,7 @@
 package com.team.grade_checklist.domain.user.dto.response;
 
 import com.team.grade_checklist.domain.subjects.enums.Majors;
+import com.team.grade_checklist.domain.subjects.enums.Years;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,7 +23,7 @@ public class UserResponse {
 
     private Majors department;
 
-    private Integer admissionYear;
+    private Years admissionYear;
 
     private BigDecimal averageGrade;
 
