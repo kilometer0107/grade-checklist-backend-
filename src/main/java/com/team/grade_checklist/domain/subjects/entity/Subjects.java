@@ -15,7 +15,7 @@ import lombok.*;
 public class Subjects {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "subjects_id", nullable = false)
+    @Column(name = "subject_id", nullable = false)
     private Integer subjectId;
 
     @ManyToOne
