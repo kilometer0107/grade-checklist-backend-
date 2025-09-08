@@ -1,6 +1,10 @@
 package com.team.grade_checklist.domain.user.service;
 
+import com.team.grade_checklist.domain.boxes.entity.EnrolledSubjects;
+import com.team.grade_checklist.domain.boxes.repository.EnrolledSubjectsRepository;
+import com.team.grade_checklist.domain.subjects.entity.Subjects;
 import com.team.grade_checklist.domain.subjects.enums.Majors;
+import com.team.grade_checklist.domain.subjects.repository.SubjectsRepository;
 import com.team.grade_checklist.domain.user.dto.request.RegisterRequest;
 import com.team.grade_checklist.domain.user.entity.User;
 import com.team.grade_checklist.domain.user.repository.UserRepository;
@@ -9,6 +13,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 // 회원가입, 로그인 등 인증/인가 관련
 @Service
 @RequiredArgsConstructor
@@ -16,6 +23,8 @@ public class AuthService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final SubjectsRepository subjectsRepository;
+    private final EnrolledSubjectsRepository enrolledSubjectsRepository;
 
     // 회원가입 처리
     @Transactional
@@ -36,7 +45,9 @@ public class AuthService {
                 .admissionYear(request.getAdmissionYear())
                 .build();
 
+
         return userRepository.save(user);
+
     }
 
     // 로그인 처리
